@@ -13,6 +13,7 @@
 ;    = 2A = RA3
 ;-------------------------------------------------------------------------------
 
+
 SetUpMotors MACRO
     BCF STATUS,RP0
     BCF STATUS,RP1 ; Bank 0
@@ -26,23 +27,17 @@ SetUpMotors MACRO
 ; Here we actually set up the PWM now for CCP1 and CCP2
 ;-------------------------------------------------------------------------------
 
-    MOVF CCP1CON,W ; Set CCP1 as PWM
-    ANDLW 0xF0
-    IORLW 0x0C
-    MOVWF CCP1CON
-    MOVF CCP2CON,W
-    ANDLW 0xF0
-    IORLW 0x0C
-    MOVWF CCP2CON  ; Set CCP2 as PWM
+    MOVLW 0xC      ; Set PWM
+    MOVWF CCP1CON  ;
+    MOVLW 0xC      ; Set PWM
+    MOVWF CCP2CON  ;
 
     MOVLW 126      ; PWM value
     BSF STATUS,RP0 ; Bank 1
     MOVWF PR2
     BCF STATUS,RP0 ; Bank 0
-    MOVF T2CON,W   ; 16 Prescaler
-    ANDLW 0xF8     ; PWM at 2500Hz
-    IORLW 0x02
-    MOVWF T2CON
+    MOVLW 0x02     ; 16 Prescaler/Postscaler 1:1/Timer Off
+    MOVWF T2CON    ; PWM at 2500Hz
 
     MOVLW 0x00     ; Set PWM1 and PWM2 to 0 (OFF)
     MOVWF CCPR1L
@@ -50,5 +45,4 @@ SetUpMotors MACRO
     MOVWF CCPR2L
     BSF T2CON,TMR2ON  ; Enable timer (Start PWM)
     RETURN
-
-SetSpeed MACRO m1,m2
+    ENDM

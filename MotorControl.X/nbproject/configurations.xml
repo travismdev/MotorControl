@@ -12,6 +12,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>Motors.inc</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -51,6 +52,14 @@
         <makeCustomizationEnableLongLines>false</makeCustomizationEnableLongLines>
         <makeCustomizationNormalizeHexFile>false</makeCustomizationNormalizeHexFile>
       </makeCustomizationType>
+      <ICD3PlatformTool>
+      </ICD3PlatformTool>
+      <MPASMWIN-AS>
+      </MPASMWIN-AS>
+      <MPASMWIN-LD>
+      </MPASMWIN-LD>
+      <mpasmsuite>
+      </mpasmsuite>
     </conf>
   </confs>
 </configurationDescriptor>
